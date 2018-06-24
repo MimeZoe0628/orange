@@ -4,7 +4,7 @@ import inspect
 class WrapperMeta(type):
     """
     Meta class for scikit-learn wrapper classes.
-
+    scikit-learn 包装器
     This is used for docstring generation/templating upon
     class definition.
     The client (class using this meta class) should define a class

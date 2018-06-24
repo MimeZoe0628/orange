@@ -3,7 +3,11 @@ import numpy as np
 from Orange.base import Learner, Model, SklLearner
 from Orange.data import Table, Domain
 
-
+# 使用一种学习器处理多种类型的目标变量
+# 继承该类的类为分发器。当使用子类时，我们提供了一个能够处理合适的数据类型的包含了实际的学习器类
+# 的字典。该fitter能够被用于任何数据，并且将作为对应的学习器的工作。
+# 如果学习器处理的每一种数据类型所需参数不一样，应当将所有可能的参数串给fitter。
+# fitter会确定哪些参数应当被传递给单个学习器。
 class Fitter(Learner):
     """Handle multiple types of target variable with one learner.
 
@@ -21,7 +25,7 @@ class Fitter(Learner):
     __fits__ = {}
     __returns__ = Model
 
-    # Constants to indicate what kind of problem we're dealing with
+    # 用来指示处理问题的类型的常量
     CLASSIFICATION, REGRESSION = 'classification', 'regression'
 
     def __init__(self, preprocessors=None, **kwargs):

@@ -34,7 +34,7 @@ class _ReprableWithPreprocessors(Reprable):
 
 
 class Learner(_ReprableWithPreprocessors):
-    """The base learner class.
+    """The base learner class.      基学习器类（学习器顶层接口）
 
     Preprocessors can behave in a number of different ways, all of which are
     described here.
@@ -75,6 +75,7 @@ class Learner(_ReprableWithPreprocessors):
         The params that the learner is constructed with.
 
     """
+    # 是否支持多分类/权重标记
     supports_multiclass = False
     supports_weights = False
     #: A sequence of data preprocessors to apply on data prior to
@@ -94,6 +95,7 @@ class Learner(_ReprableWithPreprocessors):
         raise RuntimeError(
             "Descendants of Learner must overload method fit or fit_storage")
 
+    # 该方法的默认实现是调用fit，派生类需要实现fit/fit_storage
     def fit_storage(self, data):
         """Default implementation of fit_storage defaults to calling fit.
         Derived classes must define fit_storage or fit"""

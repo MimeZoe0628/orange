@@ -17,6 +17,7 @@ class _FeatureScorerMixin(LearnerScorer):
         return model.skl_model.feature_importances_
 
 
+# 随机森林学习器，包括分类、回归实现
 class RandomForestLearner(SklFitter, _FeatureScorerMixin):
     name = 'random forest'
 
